@@ -5,7 +5,6 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
-  push:
   pull_request:
     branches: [ main ]
 
@@ -18,7 +17,7 @@ jobs:
         laravel: [10]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install composer dependencies
       run: composer require "illuminate/support:^${{ matrix.laravel }}.0"
     - name: Run tests
@@ -29,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install composer dependencies
       run: composer install
     - name: Run phpstan
@@ -39,14 +38,14 @@ jobs:
     name: Code style (php-cs-fixer)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install php-cs-fixer
         run: composer global require friendsofphp/php-cs-fixer
       - name: Run php-cs-fixer
         run: $HOME/.composer/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php
       - name: Commit changes from php-cs-fixer
-        uses: EndBug/add-and-commit@v5
+        uses: EndBug/add-and-commit@v9
         with:
-          author_name: "PHP CS Fixer"
-          author_email: "phpcsfixer@example.com"
+          author_name: "David Cortés"
+          author_email: "cortestoledanodavid@gmail.com"
           message: Fix code style (php-cs-fixer)

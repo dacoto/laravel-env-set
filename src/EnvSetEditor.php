@@ -10,7 +10,7 @@ use dacoto\EnvSet\Workers\Reader;
 use dacoto\EnvSet\Workers\Writer;
 use Illuminate\Contracts\Container\Container;
 
-final class EnvSetEditor
+class EnvSetEditor
 {
     private Container $app;
     private Formatter $formatter;
