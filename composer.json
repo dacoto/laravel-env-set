@@ -7,7 +7,7 @@
   "authors": [
     {
       "name": "David Cortés",
-      "email": "dacoto@dacoto.com"
+      "email": "cortestoledanodavid@gmail.com"
     }
   ],
   "autoload": {
@@ -21,14 +21,14 @@
     }
   },
   "require": {
-    "php": "^8.1",
-    "illuminate/support": "^10.8"
+    "php": "^8.2",
+    "illuminate/support": "^11.0"
   },
   "require-dev": {
-    "orchestra/testbench": "^8.5",
+    "orchestra/testbench": "^9.0",
     "nunomaduro/larastan": "^2.6",
-    "pestphp/pest": "^2.5",
-    "pestphp/pest-plugin-laravel": "^2.0"
+    "pestphp/pest": "^2.34",
+    "pestphp/pest-plugin-laravel": "^2.3"
   },
   "extra": {
     "laravel": {
