@@ -10,6 +10,7 @@ use dacoto\EnvSet\Exceptions\UnableWriteToFileException;
 class Writer implements \dacoto\EnvSet\Contracts\Writer
 {
     protected string $buffer;
+
     protected EnvSetFormatterContract $formatter;
 
     public function __construct(EnvSetFormatterContract $formatter)
@@ -20,7 +21,7 @@ class Writer implements \dacoto\EnvSet\Contracts\Writer
     public function setBuffer(string $content): self
     {
         if (! empty($content)) {
-            $content = rtrim((string) $content) . PHP_EOL;
+            $content = rtrim((string) $content).PHP_EOL;
         }
         $this->buffer = $content;
 
@@ -32,26 +33,26 @@ class Writer implements \dacoto\EnvSet\Contracts\Writer
         return $this->appendLine();
     }
 
-    protected function appendLine(string $text = null): self
+    protected function appendLine(?string $text = null): self
     {
-        $this->buffer .= $text . PHP_EOL;
+        $this->buffer .= $text.PHP_EOL;
 
         return $this;
     }
 
     public function appendCommentLine(string $comment): self
     {
-        return $this->appendLine('# ' . $comment);
+        return $this->appendLine('# '.$comment);
     }
 
-    public function appendSetter(string $key, string $value = null, string $comment = null, bool $export = false): self
+    public function appendSetter(string $key, ?string $value = null, ?string $comment = null, bool $export = false): self
     {
         $line = $this->formatter->formatSetterLine($key, (string) $value, $comment, $export);
 
         return $this->appendLine($line);
     }
 
-    public function updateSetter(string $key, string $value = null, string $comment = null, bool $export = false): self
+    public function updateSetter(string $key, ?string $value = null, ?string $comment = null, bool $export = false): self
     {
         $pattern = "/^(export\h)?\h*{$key}=.*/m";
         $line = $this->formatter->formatSetterLine($key, (string) $value, $comment, $export);

@@ -10,6 +10,7 @@ use dacoto\EnvSet\Exceptions\UnableReadFileException;
 class Reader implements \dacoto\EnvSet\Contracts\Reader
 {
     protected string $filePath;
+
     protected EnvSetFormatterContract $formatter;
 
     public function __construct(EnvSetFormatterContract $formatter)

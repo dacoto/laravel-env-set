@@ -21,5 +21,5 @@ test('Create New Key', function () {
 });
 
 test('Key Not Found Exception', function () {
-    expect(fn() => EnvSet::getValue('NOT_FOUND_KEY'))->toThrow(KeyNotFoundException::class);
+    expect(fn () => EnvSet::getValue('NOT_FOUND_KEY'))->toThrow(KeyNotFoundException::class);
 });

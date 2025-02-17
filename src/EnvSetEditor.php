@@ -13,19 +13,24 @@ use Illuminate\Contracts\Container\Container;
 class EnvSetEditor
 {
     private Container $app;
+
     private Formatter $formatter;
+
     private Reader $reader;
+
     private Writer $writer;
-    private string|null $filePath;
+
+    private ?string $filePath;
 
     /**
      * EnvSetEditor constructor.
+     *
      * @throws Exceptions\UnableReadFileException
      */
     public function __construct(Container $app)
     {
         $this->app = $app;
-        $this->formatter = new Formatter();
+        $this->formatter = new Formatter;
         $this->reader = new Reader($this->formatter);
         $this->writer = new Writer($this->formatter);
         $this->load();
@@ -34,16 +39,16 @@ class EnvSetEditor
     /**
      * @throws Exceptions\UnableReadFileException
      */
-    public function load(string $filePath = null): self
+    public function load(?string $filePath = null): self
     {
         $this->resetContent();
 
         if (! is_null($filePath)) {
             $this->filePath = $filePath;
         } elseif (method_exists($this->app, 'environmentPath') && method_exists($this->app, 'environmentFile')) {
-            $this->filePath = $this->app->environmentPath() . '/' . $this->app->environmentFile();
+            $this->filePath = $this->app->environmentPath().'/'.$this->app->environmentFile();
         } else {
-            $this->filePath = __DIR__ . '/../../../../../../.env';
+            $this->filePath = __DIR__.'/../../../../../../.env';
         }
 
         $this->reader->load($this->filePath);
@@ -128,7 +133,7 @@ class EnvSetEditor
     /**
      * @throws Exceptions\UnableReadFileException
      */
-    public function setKey(string $key, string $value = null, string $comment = null, bool $export = false): self
+    public function setKey(string $key, ?string $value = null, ?string $comment = null, bool $export = false): self
     {
         $value = (string) $value;
         $data = [compact('key', 'value', 'comment', 'export')];

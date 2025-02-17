@@ -27,7 +27,7 @@ interface Formatter
      * @param  string|null  $comment  optional
      * @param  bool  $export  optional
      */
-    public function formatSetterLine(string $key, string $value = null, string $comment = null, bool $export = false): string;
+    public function formatSetterLine(string $key, ?string $value = null, ?string $comment = null, bool $export = false): string;
 
     /**
      * Normalising the key of setter to reading.

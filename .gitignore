@@ -2,6 +2,7 @@
 package-lock.json
 composer.lock
 vendor/
+.idea/
 .vscode/
 coverage/
 node_modules

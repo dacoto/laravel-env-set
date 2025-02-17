@@ -24,12 +24,12 @@ interface Writer
     /**
      * Append one setter to buffer.
      */
-    public function appendSetter(string $key, string $value = null, string $comment = null, bool $export = false): self;
+    public function appendSetter(string $key, ?string $value = null, ?string $comment = null, bool $export = false): self;
 
     /**
      * Update one setter in buffer.
      */
-    public function updateSetter(string $key, string $value = null, string $comment = null, bool $export = false): self;
+    public function updateSetter(string $key, ?string $value = null, ?string $comment = null, bool $export = false): self;
 
     /**
      * Delete one setter in buffer.

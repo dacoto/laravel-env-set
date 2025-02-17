@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace dacoto\EnvSet\Tests;
 
-use dacoto\EnvSet\Facades\EnvSet;
 use dacoto\EnvSet\EnvSetServiceProvider;
+use dacoto\EnvSet\Facades\EnvSet;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -13,23 +13,23 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        if (file_exists(__DIR__ . '/.env')) {
-            unlink(__DIR__ . '/.env');
+        if (file_exists(__DIR__.'/.env')) {
+            unlink(__DIR__.'/.env');
         }
-        copy(__DIR__ . '/stubs/env', __DIR__ . '/.env');
+        copy(__DIR__.'/stubs/env', __DIR__.'/.env');
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unlink(__DIR__ . '/.env');
+        unlink(__DIR__.'/.env');
     }
 
     protected function getPackageProviders($app): array
     {
         return [
-            EnvSetServiceProvider::class
+            EnvSetServiceProvider::class,
         ];
     }
 

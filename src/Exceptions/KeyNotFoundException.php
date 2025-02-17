@@ -6,6 +6,4 @@ namespace dacoto\EnvSet\Exceptions;
 
 use Exception;
 
-class KeyNotFoundException extends Exception
-{
-}
+class KeyNotFoundException extends Exception {}

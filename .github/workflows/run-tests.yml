@@ -13,10 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        php: [8.2, 8.3]
-        laravel: ['11.*']
+        php: [8.2, 8.3, 8.4]
+        laravel: [11.*, '12.*']
+        testbench: [^9.0, ^10.0]
+        exclude:
+          - laravel: 11.*
+            testbench: ^9.0
+          - laravel: 12.*
+            testbench: ^10.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }}
 
@@ -31,8 +37,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
-          composer update --prefer-dist --no-interaction
+          composer require \
+            "illuminate/support:${{ matrix.laravel }}" \
+            "orchestra/testbench:${{ matrix.testbench }}" \
+            --no-interaction --no-update
 
       - name: Tests
         run: ./vendor/bin/pest

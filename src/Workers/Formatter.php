@@ -11,10 +11,10 @@ class Formatter implements \dacoto\EnvSet\Contracts\Formatter
     /**
      * Build a setter line from the individual components for writing.
      *
-     * @param string|null $comment optional
-     * @param bool $export optional
+     * @param  string|null  $comment  optional
+     * @param  bool  $export  optional
      */
-    public function formatSetterLine(string $key, string $value = null, string $comment = null, bool $export = false): string
+    public function formatSetterLine(string $key, ?string $value = null, ?string $comment = null, bool $export = false): string
     {
         $forceQuotes = ($comment !== '' && trim((string) $value) === '');
         $value = (string) $this->formatValue((string) $value, $forceQuotes);

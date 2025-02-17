@@ -6,6 +6,4 @@ namespace dacoto\EnvSet\Exceptions;
 
 use Exception;
 
-class UnableWriteToFileException extends Exception
-{
-}
+class UnableWriteToFileException extends Exception {}
