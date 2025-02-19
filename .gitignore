@@ -3,5 +3,6 @@ package-lock.json
 composer.lock
 vendor/
 .vscode/
+.idea/
 coverage/
 node_modules

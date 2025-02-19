@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Facade;
  * @see EnvSetEditor::addComment
  * @method static EnvSetEditor addComment($comment)
  * @see EnvSetEditor::getValue
- * @method static mixed getValue($key)
+ * @method static mixed getValue($key, $default = null)
  * @see EnvSetEditor::getKeys
  * @method static array getKeys($keys = [])
  * @see EnvSetEditor::setKey

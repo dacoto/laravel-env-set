@@ -13,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        php: [8.2, 8.3]
-        laravel: ['11.*']
+        php: [8.2, 8.3, 8.4]
+        packages:
+          - { laravel: ^11.0,  testbench: ^9.0, phpunit: 10.5.* }
+          - { laravel: ^12.0,  testbench: ^10.0, phpunit: 11.5.* }
 
-    name: P${{ matrix.php }} - L${{ matrix.laravel }}
+    name: phpunit (PHP:${{ matrix.php }}, Laravel:${{ matrix.packages.laravel }})
 
     steps:
       - name: Checkout code
@@ -31,8 +33,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
-          composer update --prefer-dist --no-interaction
+          composer require \
+            "illuminate/support:${{ matrix.packages.laravel }}" \
+            "phpunit/phpunit:${{ matrix.packages.phpunit }}" \
+            "orchestra/testbench:${{ matrix.packages.testbench }}" \
+            --no-interaction --no-update
+
+          composer install --no-interaction --prefer-dist --no-progress
 
       - name: Tests
-        run: ./vendor/bin/pest
+        run: ./vendor/bin/phpunit
