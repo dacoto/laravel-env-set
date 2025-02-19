@@ -84,12 +84,16 @@ class EnvSetEditor
      * @throws KeyNotFoundException
      * @throws Exceptions\UnableReadFileException
      */
-    public function getValue(string $key): mixed
+    public function getValue(string $key, mixed $default = null): mixed
     {
         $allKeys = $this->getKeys([$key]);
 
         if (array_key_exists($key, $allKeys)) {
             return $allKeys[$key]['value'];
+        }
+
+        if ($default !== null) {
+            return $default;
         }
 
         throw new KeyNotFoundException('Requested key not found in your file.');

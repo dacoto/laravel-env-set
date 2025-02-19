@@ -22,13 +22,11 @@
   },
   "require": {
     "php": "^8.2",
-    "illuminate/support": "^11.0"
+    "illuminate/support": "^11.0 | ^12.0"
   },
   "require-dev": {
-    "orchestra/testbench": "^9.0",
-    "nunomaduro/larastan": "^2.6",
-    "pestphp/pest": "^2.34",
-    "pestphp/pest-plugin-laravel": "^2.3"
+    "orchestra/testbench": "^9.0 | ^10.0",
+    "phpunit/phpunit": "^10.4 | ^11.5"
   },
   "extra": {
     "laravel": {
@@ -41,10 +39,5 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "config": {
-    "allow-plugins": {
-      "pestphp/pest-plugin": true
-    }
-  }
+  "prefer-stable": true
 }
